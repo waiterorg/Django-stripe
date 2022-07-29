@@ -26,3 +26,13 @@ def create_stripe_customer(email, stripe_payment_method_id):
 def create_stripe_product(product_name):
     product = stripe.Product.create(name=product_name)
     return product
+
+
+def create_stripe_price(product_price, stripe_product_id):
+    stripe_price = stripe.Price.create(
+        unit_amount=product_price,
+        currency="usd",
+        recurring={"interval": "month"},
+        product=stripe_product_id,
+    )
+    return stripe_price
