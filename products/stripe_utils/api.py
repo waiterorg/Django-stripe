@@ -21,3 +21,8 @@ def create_stripe_customer(email, stripe_payment_method_id):
         invoice_settings={"default_payment_method": stripe_payment_method_id},
     )
     return customer
+
+
+def create_stripe_product(product_name):
+    product = stripe.Product.create(name=product_name)
+    return product
