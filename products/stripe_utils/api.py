@@ -36,3 +36,14 @@ def create_stripe_price(product_price, stripe_product_id):
         product=stripe_product_id,
     )
     return stripe_price
+
+
+def create_stripe_subscription(customer_id, stripe_price_id):
+    stripe_subscription = stripe.Subscription.create(
+        customer=customer_id,
+        items=[
+            {"price": stripe_price_id},
+        ],
+        payment_behavior="allow_incomplete",
+    )
+    return stripe_subscription
