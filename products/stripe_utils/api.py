@@ -1,7 +1,7 @@
 import stripe
 
 
-def stripe_payment_card_method(number, exp_month, exp_year, cvc):
+def create_stripe_payment_card_method(number, exp_month, exp_year, cvc):
     stripe_payment_method = stripe.PaymentMethod.create(
         type="card",
         card={
@@ -12,3 +12,12 @@ def stripe_payment_card_method(number, exp_month, exp_year, cvc):
         },
     )
     return stripe_payment_method
+
+
+def create_stripe_customer(email, stripe_payment_method_id):
+    customer = stripe.Customer.create(
+        email=email,
+        payment_method=stripe_payment_method_id,
+        invoice_settings={"default_payment_method": stripe_payment_method_id},
+    )
+    return customer
