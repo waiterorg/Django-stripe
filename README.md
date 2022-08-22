@@ -10,3 +10,11 @@ use stripe api for creating subscription for customer
 
 #َAPI
 this webapp use stripe api for payment
+
+## Future Feature
+  - [ ] Authentication with jwt .
+  - [ ] API or view for add or remove to cart .
+  - [ ] API or view for checkout .
+  - [ ] API or view for search products .
+  - [ ] API or view for payment .
+  - [ ] API or view for refund .
